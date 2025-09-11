@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>LUGX — Best Gaming Site</title>
+<style>
+  :root{
+    --blue:#0ea5e9;
+    --deep-blue:#0784d1;
+    --accent:#ff6b88;
+    --card:#ffffff;
+    --muted:#9aa6b2;
+    --shadow: 0 6px 20px rgba(17,24,39,0.08);
+    --rounded:18px;
+    --radius-hero: 60px;
+    font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  }
+
+  *{box-sizing:border-box}
+  body{
+    margin:0;
+    background: #f5f7fb;
+    color:#102a43;
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+    line-height:1.4;
+  }
+
+  /* Container */
+  .wrap{
+    max-width:1100px;
+    margin:30px auto;
+    padding:0 20px 80px;
+  }
+
+  /* Hero */
+  .hero{
+    background: linear-gradient(180deg, var(--blue) 0%, var(--deep-blue) 100%);
+    color:#fff;
+    border-radius: 24px;
+    padding:34px;
+    position:relative;
+    overflow:visible;
+    display:flex;
+    gap:28px;
+    align-items:flex-start;
+    box-shadow: var(--shadow);
+    border-bottom-left-radius: var(--radius-hero);
+    border-bottom-right-radius: var(--radius-hero);
+  }
+
+  .hero-left{
+    flex:1;
+    min-width:0;
+  }
+
+  .logo{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    margin-bottom:18px;
+  }
+  .logo .mark{
+    width:44px;height:44px;border-radius:10px;
+    background: rgba(255,255,255,0.14);
+    display:flex;align-items:center;justify-content:center;
+    font-weight:700;
+  }
+  .logo .text{font-weight:700;letter-spacing:0.6px}
+
+  .hero h1{
+    margin:0 0 14px 0;
+    font-size:34px;
+    line-height:1.02;
+    letter-spacing:0.4px;
+  }
+
+  .hero p.lead{
+    margin:0 0 20px 0;
+    color: rgba(255,255,255,0.9);
+    max-width:60%;
+    font-size:14px;
+  }
+
+  /* Search box */
+  .search{
+    display:flex;
+    gap:12px;
+    align-items:center;
+    margin-top:18px;
+    width:100%;
+    max-width:520px;
+  }
+  .search input{
+    flex:1;
+    padding:12px 16px;
+    border-radius:30px;
+    border:none;
+    outline:none;
+    font-size:14px;
+  }
+  .btn{
+    background:var(--accent);
+    color:#fff;
+    border:none;
+    padding:10px 18px;
+    border-radius:20px;
+    font-weight:600;
+    cursor:pointer;
+    box-shadow:0 6px 18px rgba(255,107,136,0.18);
+  }
+
+  /* Right card with image and badges */
+  .hero-right{
+    width:240px;
+    position:relative;
+  }
+  .game-card{
+    background: #fff;
+    color: #0b1220;
+    border-radius:16px;
+    padding:8px;
+    box-shadow: var(--shadow);
+    overflow:hidden;
+    position:relative;
+  }
+  .game-card img{
+    width:100%; display:block; border-radius:10px;
+  }
+  .badge-top{
+    position:absolute;
+    top:8px;
+    right:8px;
+    background: #1e293b;
+    color:#fff;
+    padding:6px 8px;
+    border-radius:14px;
+    font-weight:700;
+    font-size:13px;
+  }
+  .badge-sale{
+    position:absolute;
+    left:8px;
+    bottom:8px;
+    background:var(--accent);
+    color:#fff;
+    padding:6px 10px;
+    border-radius:20px;
+    font-weight:700;
+    font-size:13px;
+    transform: translateY(20%);
+  }
+
+  /* Feature row below hero (cards overlapping bottom) */
+  .features{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:18px;
+    position:relative;
+    transform: translateY(36px);
+    margin: 0 20px;
+  }
+  .feature{
+    background:var(--card);
+    border-radius:14px;
+    padding:16px;
+    text-align:center;
+    box-shadow: var(--shadow);
+  }
+  .feature .ico{
+    width:48px;height:48px;border-radius:12px;background:linear-gradient(180deg,#eef7fb,#dff6ff);
+    display:inline-flex;align-items:center;justify-content:center;margin-bottom:10px;
+    font-weight:700;
+    color: #0b61a8;
+  }
+  .feature small{display:block;color:var(--muted);font-weight:700;margin-top:6px;font-size:13px}
+
+  /* Trending section */
+  .section{
+    margin-top:80px;
+  }
+  .section .head{
+    display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;
+  }
+  .section h2{margin:0;font-size:20px}
+  .see-all{
+    background:transparent;border:2px solid var(--accent);padding:8px 12px;border-radius:20px;color:var(--accent);font-weight:700;
+  }
+
+  .grid-games{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:18px;
+    margin-top:6px;
+  }
+  .game{
+    background: #fff;
+    border-radius:12px;
+    padding:12px;
+    box-shadow: var(--shadow);
+    overflow:hidden;
+  }
+  .game img{width:100%;height:110px;object-fit:cover;border-radius:8px}
+  .game .meta{display:flex;justify-content:space-between;align-items:center;margin-top:10px}
+  .game .meta .title{font-weight:700;font-size:14px}
+  .price-pill{background:#0ea5e9;color:#fff;padding:6px 10px;border-radius:14px;font-weight:700;font-size:13px}
+
+  /* small screens */
+  @media (max-width:900px){
+    .hero{flex-direction:column;align-items:stretch;padding:22px}
+    .hero p.lead{max-width:100%}
+    .hero-right{align-self:center;width:220px;margin-top:10px}
+    .features{grid-template-columns:repeat(2,1fr);transform:translateY(20px);margin:0}
+    .grid-games{grid-template-columns:repeat(2,1fr)}
+  }
+  @media (max-width:480px){
+    .wrap{padding:0 14px}
+    .hero h1{font-size:26px}
+    .features{grid-template-columns:1fr;gap:12px}
+    .grid-games{grid-template-columns:1fr}
+  }
+
+  /* small visual niceties */
+  .muted-small{color:var(--muted);font-size:13px;margin-top:6px}
+</style>
+</head>
+<body>
+  <div class="wrap">
+
+    <header class="hero" role="banner" aria-label="Hero">
+      <div class="hero-left">
+        <div class="logo" aria-hidden="true">
+          <div class="mark">X</div>
+          <div class="text">LUGX</div>
+        </div>
+
+        <h1>BEST GAMING SITE EVER!</h1>
+        <p class="lead">LUGX — A free Bootstrap 4 HTML/CSS template made for gaming stores and game showcases. Use it as a starter and personalize to your brand.</p>
+
+        <div class="search" role="search" aria-label="Buscar jogos">
+          <input type="search" placeholder="Type something..." aria-label="Buscar" />
+          <button class="btn" type="button">SEARCH NOW</button>
+        </div>
+      </div>
+
+      <aside class="hero-right" aria-label="Destaque do jogo">
+        <div class="game-card" role="img" aria-label="Imagem do jogo">
+          <img src="https://via.placeholder.com/400x520.png?text=Game+Art" alt="Imagem do jogo em destaque" />
+          <div class="badge-top">#22</div>
+          <div class="badge-sale">-40%</div>
+        </div>
+      </aside>
+    </header>
+
+    <!-- Feature cards overlapping -->
+    <div class="features" aria-hidden="false">
+      <div class="feature">
+        <div class="ico">☁</div>
+        <small>FREE STORAGE</small>
+      </div>
+      <div class="feature">
+        <div class="ico">👥</div>
+        <small>USER MODE</small>
+      </div>
+      <div class="feature">
+        <div class="ico">⚡</div>
+        <small>REPLY READY</small>
+      </div>
+      <div class="feature">
+        <div class="ico">📐</div>
+        <small>EASY LAYOUT</small>
+      </div>
+    </div>
+
+    <!-- Trending games -->
+    <section class="section">
+      <div class="head">
+        <h2>Trending Games</h2>
+        <button class="see-all">VIEW ALL</button>
+      </div>
+
+      <div class="grid-games">
+        <article class="game" aria-label="Jogo 2">
+          <img src="https://cdn2.unrealengine.com/ac2-gamename-store-landscape-2560x1440-2560x1440-aa944fa0e8c6.jpg" alt="Assassin Creed 2" />
+          <div class="meta">
+            <div>
+              <div class="title">Assassin Creed</div>
+              <div class="muted-small">Action — Adventure</div>
+            </div>
+            <div class="price-pill">$44</div>
+          </div>
+        </article>
+
+        <article class="game" aria-label="Jogo 2">
+          <img src="https://cdn2.unrealengine.com/ac2-gamename-store-landscape-2560x1440-2560x1440-aa944fa0e8c6.jpg" alt="Assassin Creed 2" />
+          <div class="meta">
+            <div>
+              <div class="title">Assassin Creed</div>
+              <div class="muted-small">Action — Adventure</div>
+            </div>
+            <div class="price-pill">$44</div>
+          </div>
+        </article>
+
+        <article class="game" aria-label="Jogo 3">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVt-vAABP7OHKQyOyVR2yW1hnuUzFruDmVaw&s" alt="Assassin Creed 3" />
+          <div class="meta">
+            <div>
+              <div class="title">Assassin Creed</div>
+              <div class="muted-small">Action — Adventure</div>
+            </div>
+            <div class="price-pill">$14</div>
+          </div>
+        </article>
+
+        <article class="game" aria-label="Jogo 4">
+          <img src="https://http2.mlstatic.com/D_NQ_NP_690909-MLB82920369436_032025-O.webp" alt="Assassin Creed 4" />
+          <div class="meta">
+            <div>
+              <div class="title">Assassin Creed</div>
+              <div class="muted-small">Action — Adventure</div>
+            </div>
+            <div class="price-pill">$32</div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+  </div>
+</body>
+</html>
